@@ -1,7 +1,7 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\<"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
+# Treasure Hunt
  > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
  
  > Authors: [Isabella Santiago](https://github.com/isant028), [Annie Wang](https://github.com/awang923), [Jonas Segundo](https://github.com/Jsegu447)
