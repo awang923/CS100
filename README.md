@@ -17,14 +17,20 @@
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
- > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
- > * What are the three design patterns you will be using. For each design pattern you must:
- >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+> * Description
+>	*  This is a game similar to a very common game called Minesweeper. However, in our project, we planned to modify it a little bit and make it a treasure hunting game. Users need to travel across the map and avoid all the pirate ships in order to find the treasure. There will be 2 modes: Beginner and Normal. 
+> * Importance
+>	*  As computer science major students, we always have a strong interest in coding games, so we thought this would be a very good opportunity for us to explore the game development field. We decided to code a game similar to minesweeper because it reminds us of our childhood. 
+> * Technology/Language/Tools
+>	*  C++, computer terminal
+> * Input/Output
+>	*  Input: The difficulty of the game. The coordinates of the map where the user wants to search for treasurer. 
+>	*  Output: The initial map.  Asking the user for coordinates. The updated map showing where the user dug up and available spaces left. Where the pirate ships are after they win/lose. 
+> * Design Patterns
+>	*  Strategy Pattern: At the beginning of the game, the player chooses between 2 game modes: Beginner or Normal. In normal mode, if the user uncovers a pirate ship it would automatically end the game. However, in beginner mode, if the user uncovers a pirate ship, the game continues. They only get 1 chance so if they uncover another pirate ship, the game ends. 
+>	*  Iterator Pattern: Where the pirate ships are located will be stored in a 2d array. The row and column of the board will match the 2d array. When a user inputs a coordinate to search for treasure, the array will be traversed until it hits the coordinate, checking if the pirate ship is there or not. Depending on the game mode and if there is a pirate ship, the game will continue asking the user for another input or end. 
+>	*  Singleton Pattern: There will be a dedicated class that will create the game board. When the game starts, a board gets built and initialized. The pirate ships are then randomly placed inside the 2-d array unknown to the player. This board does not change at all as the pirate ships stay in the same place. 
+
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
