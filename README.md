@@ -45,6 +45,16 @@
 ## Class Diagram
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
  <img src="Images/CS100.jpeg">
+
+> Board Class - Encompasses the Iterator pattern as there will be an iterator class that will iterate through the displaySet and Set of the board class in order to check if the game has been won and to update the status of the displayed board. Also includes the singleton pattern as there will be a single instance of the board created to play the game, and all interactions are solely with the board.
+
+> Iterator Class - The actually iterator itself which will iterate through both the vectors of the Board class and check if game is won and update board.
+ 
+ > modeSelect Class - the Strategy class of the program. Context is the Board class and facilitates the selection for algorithm of win function depending on if the user is playing on hard or easy mode. 
+ 
+> Hard Class - concrete strategy which inherits from modeSelect. Hard's algorithm to calculate if win occured is used when the user picks the hard option at start of game. Allows for no mistakes; uncovering a enemy pirate ships loses the games.
+
+> Easy Class - concrete strategy which inherits from modeSelect. Easy's algorithm is used to calculate if win has occured when the user has selected the easy option at the start of game. Allows for more mistakes; is more forgiving.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
