@@ -1,9 +1,10 @@
 #include "Board.hpp"
+#include "mBoard.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
 
-Board::Board(){
+mBoard::mBoard(){
 vector <char> column1;
 vector <char> column2;
 vector <char> column3;
@@ -146,7 +147,7 @@ set.push_back(column9);
 set.push_back(column10);
 }
 
-void Board::display(){
+void mBoard::display(){
 cout << "   A B C D E F G H I J " << endl;
 cout << "1 |" << displaySet[0][0] << "|" << displaySet[0][1] << "|" << displaySet[0][2] << "|" << displaySet[0][3] << "|" << displaySet[0][4] << "|" << displaySet[0][5] << "|" << displaySet[0][6] << "|" << displaySet[0][7] << "|" << displaySet[0][8] << "|" << displaySet[0][9] << "|" << endl;
 

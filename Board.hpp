@@ -3,14 +3,14 @@
 
 #include <vector>
 class Board {
-private:
+protected:
 	std::vector < std::vector<char> > set;
 	std::vector < std::vector<char> > displaySet;
 	
 public:
-	void display();
-        Board();
-	
+	virtual void display() = 0;
+        Board(){}
+	friend class difficulty;
 };
 
 #endif //BOARD_H

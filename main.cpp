@@ -1,6 +1,7 @@
+#include "mBoard.hpp"
 #include "Board.hpp"
 int main(){
-Board* mine = new Board();
+Board* mine = new mBoard();
 
 mine->display();
 
