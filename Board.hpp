@@ -8,8 +8,8 @@ protected:
 	std::vector < std::vector<char> > displaySet;
 	
 public:
-	virtual void display() = 0;
-        Board(){}
+	void display();
+        Board();
 	friend class difficulty;
 };
 
