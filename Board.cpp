@@ -15,11 +15,12 @@ vector <char> column8;
 vector <char> column9;
 vector <char> column10;
 vector <char> seaColumn;
-//create column for display set
+
+
 for(int i = 0; i < 10; i++){
 	seaColumn.push_back('~');
 }
-//populate display set
+
 for(int i = 0; i < 10; i++){
 	displaySet.push_back(seaColumn);
 }	
