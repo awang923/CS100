@@ -3,7 +3,8 @@ private:
 	vector <vector<char>> set;
 	vector <vector<char>> displaySet;
 public:
-	display();
+	virtual void display() = 0;
+	Board();
 	
 
 
