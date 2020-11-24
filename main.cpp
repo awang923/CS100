@@ -2,7 +2,7 @@
 int main(){
 Board* mine = new Board();
 
-mine->display();
+mine->run_game();
 
 
 

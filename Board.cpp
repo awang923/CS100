@@ -168,3 +168,8 @@ cout << "9 |" << displaySet[8][0] << "|" << displaySet[8][1] << "|" << displaySe
 
 cout << "10|" << displaySet[9][0] << "|" << displaySet[9][1] << "|" << displaySet[9][2] << "|" << displaySet[9][3] << "|" << displaySet[9][4] << "|" << displaySet[9][5] << "|" << displaySet[9][6] << "|" << displaySet[9][7] << "|" << displaySet[9][8] << "|" << displaySet[9][9] << "|" << endl;
 }
+
+void Board::run_game(){
+cout << "T R E A S U R E  H U N T" << endl;
+this->display();
+}
