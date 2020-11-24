@@ -9,5 +9,4 @@ class Difficulty{
 
 };
 
-#endif
-~       
+#endif       
