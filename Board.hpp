@@ -16,8 +16,10 @@ class Board {
         void getXCoor(char XCoor);
         void getYCoor(char YCoor);
         void run_game();
+	void displayPirate();
 	int convert();
-	void markBoard();
+	void updateBoard();
+	bool check();
         friend class difficulty;
 };
 #endif //BOARD_H
