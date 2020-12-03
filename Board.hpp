@@ -2,11 +2,14 @@
 #define BOARD_H
 //#include "Difficulty.hpp"
 #include <vector>
-
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
 class Board {
    private:
         char XCoor;
         char YCoor;
+        void populate();
    protected:
         std::vector < std::vector<char> > set;
         std::vector < std::vector<char> > displaySet;
@@ -23,4 +26,5 @@ class Board {
         friend class difficulty;
 };
 #endif //BOARD_H
+
 

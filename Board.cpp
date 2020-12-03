@@ -4,16 +4,6 @@
 using namespace std;
 
 Board::Board(){
-vector <char> column1;
-vector <char> column2;
-vector <char> column3;
-vector <char> column4;
-vector <char> column5;
-vector <char> column6;
-vector <char> column7;
-vector <char> column8;
-vector <char> column9;
-vector <char> column10;
 vector <char> seaColumn;
 
 
@@ -25,126 +15,8 @@ for(int i = 0; i < 10; i++){
 	displaySet.push_back(seaColumn);
 }	
 
-column1.push_back('1');
-column1.push_back('1');
-column1.push_back('2');
-column1.push_back('1');
-column1.push_back('1');
-column1.push_back('0');
-column1.push_back('0');
-column1.push_back('0');
-column1.push_back('0');
-column1.push_back('0');
 
-column2.push_back('1');
-column2.push_back('*');
-column2.push_back('2');
-column2.push_back('*');
-column2.push_back('1');
-column2.push_back('1');
-column2.push_back('1');
-column2.push_back('1');
-column2.push_back('0');
-column2.push_back('0');
-
-column3.push_back('2');
-column3.push_back('2');
-column3.push_back('3');
-column3.push_back('1');
-column3.push_back('1');
-column3.push_back('1');
-column3.push_back('*');
-column3.push_back('1');
-column3.push_back('0');
-column3.push_back('0');
-
-column4.push_back('1');
-column4.push_back('*');
-column4.push_back('1');
-column4.push_back('0');
-column4.push_back('1');
-column4.push_back('2');
-column4.push_back('3');
-column4.push_back('2');
-column4.push_back('1');
-column4.push_back('0');
-
-column5.push_back('1');
-column5.push_back('2');
-column5.push_back('2');
-column5.push_back('1');
-column5.push_back('1');
-column5.push_back('*');
-column5.push_back('2');
-column5.push_back('*');
-column5.push_back('1');
-column5.push_back('0');
-
-column6.push_back('0');
-column6.push_back('1');
-column6.push_back('*');
-column6.push_back('1');
-column6.push_back('1');
-column6.push_back('1');
-column6.push_back('2');
-column6.push_back('1');
-column6.push_back('1');
-column6.push_back('0');
-
-column7.push_back('0');
-column7.push_back('1');
-column7.push_back('1');
-column7.push_back('1');
-column7.push_back('0');
-column7.push_back('0');
-column7.push_back('0');
-column7.push_back('0');
-column7.push_back('0');
-column7.push_back('0');
-
-column8.push_back('1');
-column8.push_back('1');
-column8.push_back('0');
-column8.push_back('1');
-column8.push_back('1');
-column8.push_back('1');
-column8.push_back('0');
-column8.push_back('1');
-column8.push_back('1');
-column8.push_back('1');
-
-column9.push_back('*');
-column9.push_back('1');
-column9.push_back('0');
-column9.push_back('1');
-column9.push_back('*');
-column9.push_back('1');
-column9.push_back('0');
-column9.push_back('1');
-column9.push_back('*');
-column9.push_back('1');
-
-column10.push_back('1');
-column10.push_back('1');
-column10.push_back('0');
-column10.push_back('1');
-column10.push_back('1');
-column10.push_back('1');
-column10.push_back('0');
-column10.push_back('1');
-column10.push_back('1');
-column10.push_back('1');
-
-set.push_back(column1);
-set.push_back(column2);
-set.push_back(column3);
-set.push_back(column4);
-set.push_back(column5);
-set.push_back(column6);
-set.push_back(column7);
-set.push_back(column8);
-set.push_back(column9);
-set.push_back(column10);
+populate();
 }
 
 void Board::display(){
@@ -256,10 +128,195 @@ bool Board::check(){
 	displaySet[y][x] = set[y][x];
 	return true;
    }
+
 }
 
 void Board::run_game(){
 cout << "T R E A S U R E  H U N T" << endl;
 this->display();
 this->updateBoard();
+}
+
+void Board::populate(){
+ vector<char> mt;
+    for(int i = 0; i < 10 ; i++){
+        mt.push_back('0');
+    }
+    for(int i = 0; i < 10 ; i++){
+        set.push_back(mt);
+    }
+ 
+    for(int i = 0; i < 10 ; i++){
+        int a = rand()%10;
+        int b = rand()%10;
+        set[a][b] = '*';
+    }
+
+for (auto i = 0; i < 10; i++) {
+        for(auto j = 0; j < 10; j++){
+            if(set[i][j] == '*'){ continue;}
+           
+            if ( i == 0){
+                if(j == 0){
+                    int count = 0;
+                    if(set[0][1] == '*'){
+                        count++;
+                    }
+                    if(set[1][0] == '*'){
+                        count++;
+                    }
+                    if(set[1][1] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+                else if(j == 9){
+                    int count = 0;
+                    if(set[0][8] == '*'){
+                        count++;
+                    }
+                    if(set[1][9] == '*'){
+                        count++;
+                    }
+                    if(set[1][8] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+                else{
+                    int count = 0;
+                    if(set[i][j-1] == '*'){
+                        count++;
+                    }
+                    if(set[i][j+1] == '*'){
+                        count++;
+                    }
+                    if(set[i+1][j-1] == '*'){
+                        count++;
+                    }
+                    if(set[i+1][j] == '*'){
+                        count++;
+                    }
+                    if(set[i+1][j+1] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+            }
+           
+            else if ( i == 9){
+                if(j == 0){
+                    int count = 0;
+                    if(set[9][1] == '*'){
+                        count++;
+                    }
+                    if(set[8][0] == '*'){
+                        count++;
+                    }
+                    if(set[8][1] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+                else if(j == 9){
+                    int count = 0;
+                    if(set[9][8] == '*'){
+                        count++;
+                    }
+                    if(set[8][9] == '*'){
+                        count++;
+                    }
+                    if(set[8][8] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+                else{
+                    int count = 0;
+                    if(set[i][j-1] == '*'){
+                        count++;
+                    }
+                    if(set[i][j+1] == '*'){
+                        count++;
+                    }
+                    if(set[i-1][j-1] == '*'){
+                        count++;
+                    }
+                    if(set[i-1][j] == '*'){
+                        count++;
+                    }
+                    if(set[i-1][j+1] == '*'){
+                        count++;
+                    }
+                    set[i][j] += count;
+                }
+            }
+            else if(j == 0){
+                int count = 0;
+                if(set[i-1][0] == '*'){
+                    count++;
+                }
+                if(set[i-1][1] == '*'){
+                    count++;
+                }
+                if(set[i][1] == '*'){
+                    count++;
+                }
+                if(set[i+1][0] == '*'){
+                    count++;
+                }
+                if(set[i+1][1] == '*'){
+                    count++;
+                }
+                set[i][j] += count;
+            }
+            else if(j == 9){
+                int count = 0;
+                if(set[i-1][8] == '*'){
+                    count++;
+                }
+                if(set[i-1][9] == '*'){
+                    count++;
+                }
+                if(set[i][8] == '*'){
+                    count++;
+                }
+                if(set[i+1][8] == '*'){
+                    count++;
+                }
+                if(set[i+1][9] == '*'){
+                    count++;
+                }
+                set[i][j] += count;
+            }
+            else{
+                int count = 0;
+                if(set[i][j-1] == '*'){
+                    count++;
+                }
+                if(set[i][j+1] == '*'){
+                    count++;
+                }
+                if(set[i-1][j-1] == '*'){
+                    count++;
+                }
+                if(set[i-1][j] == '*'){
+                    count++;
+                }
+                if(set[i-1][j+1] == '*'){
+                    count++;
+                }
+                if(set[i+1][j-1] == '*'){
+                    count++;
+                }
+                if(set[i+1][j] == '*'){
+                    count++;
+                }
+                if(set[i+1][j+1] == '*'){
+                    count++;
+                }
+                set[i][j] += count;
+            }
+        }
+    }
 }
