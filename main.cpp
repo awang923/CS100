@@ -1,11 +1,8 @@
 #include "Board.hpp"
 int main(){
-Board* mine = new Board();
+   Board* mine = new Board();
+   mine->run_game();
 
-mine->run_game();
+   return 0;
 
-
-
-
-return 0;
 }

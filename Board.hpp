@@ -5,17 +5,26 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
-//class Difficulty;
 class Board {
-protected:
-	std::vector < std::vector<char> > set;
-	std::vector < std::vector<char> > displaySet;
-	void populate();
-public:
-	void display();
+   private:
+        char XCoor;
+        char YCoor;
+        void populate();
+   protected:
+        std::vector < std::vector<char> > set;
+        std::vector < std::vector<char> > displaySet;
+   public:
+        void display();
         Board();
-	void run_game();
-	friend class difficulty;
+        void getXCoor(char XCoor);
+        void getYCoor(char YCoor);
+        void run_game();
+	void displayPirate();
+	int convert();
+	void updateBoard();
+	bool check();
+        friend class difficulty;
 };
-
 #endif //BOARD_H
+
+
