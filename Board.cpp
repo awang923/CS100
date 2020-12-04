@@ -139,6 +139,7 @@ this->updateBoard();
 
 void Board::populate(){
  vector<char> mt;
+ srand(time(NULL));
     for(int i = 0; i < 10 ; i++){
         mt.push_back('0');
     }
