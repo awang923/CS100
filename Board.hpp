@@ -8,19 +8,22 @@
 class Board {
    private:
         char XCoor;
-        char YCoor;
+        int YCoor;
         void populate();
    protected:
         std::vector < std::vector<char> > set;
         std::vector < std::vector<char> > displaySet;
+        int Pcount;
    public:
         void display();
         Board();
         void getXCoor(char XCoor);
-        void getYCoor(char YCoor);
+        void getYCoor(int YCoor);
         void run_game();
 	void displayPirate();
 	int convert();
+	bool getMark();
+	int getCount();
 	void updateBoard();
 	bool check();
         friend class difficulty;
