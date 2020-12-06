@@ -20,11 +20,13 @@ populate();
 }
 
 void Board::display(){
+Iterator* it = new Iterator();
 cout << "   A B C D E F G H I J " << endl;
 for (int i = 0; i < 9; i++){
   cout << i+1 << " |";
   for (int j = 0; j < 10; j++){
-	cout << displaySet[i][j] << "|";
+	cout << displaySet[it->getColumn()][it->getRow()] << "|";
+	it->next();
   }
   cout << endl;
  }

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+#include "iterator.hpp"
 class Board {
    private:
         char XCoor;
