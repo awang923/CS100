@@ -11,7 +11,7 @@ class Difficulty: public Hard {
         public:
 	     
 	     Hard() : Difficulty() {};
-	     Hard(Board* b) : Difficulty(b) {}
+	     Hard(Board* b) : Difficulty(b) {};
              int y = YCoor -1;
 	     //int x = XCoor[1] - 97;
 	     int x = convert(XCoor);
