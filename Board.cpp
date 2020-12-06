@@ -66,9 +66,13 @@ void Board::getXCoor(char XCoor){
 void Board::getYCoor(int YCoor) {
    cout << "Please enter the Y coordinate." << endl;
    cin >> YCoor;
-   while (!(YCoor <= 10 && YCoor >= 1)){
+   bool checkAns;
+   while (!(YCoor <= 10 && YCoor >= 1)|| !(cin >> YCoor)){
         cout << "Invalid input. Please enter a number between 1 and 9." << endl;
-  	cin >> YCoor;
+  	cin.clear();
+	cin.ignore(10000,'\n');
+	cin >> YCoor;
+	break;
    }
    cout << "Valid input" << endl;
    this->YCoor = YCoor;
