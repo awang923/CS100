@@ -3,9 +3,13 @@
 #include "Board.hpp"
 class Board; 
 class Difficulty{
+
+	private:
+ 	    Board* gameBoard;
+
         public:
-        Difficulty(){};
-        virtual void difficulty(Board* board) =0;
+            Difficulty(Board *b):gameBoard(b){};
+       	virtual bool difficulty() =0;
 
 };
 
