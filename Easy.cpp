@@ -4,7 +4,9 @@
 Easy::Easy(Board* b){
 this->gameBoard = b;
 }
-bool Easy::difficulty(){
+bool Easy::difficulty(int xc, int yc){
+		xc = gameBoard->x;
+		yc = gameBaord->y;
                 if (gameBoard->set[0][1] == '*'){
                         if (count = 1){
                                 cout << endl << "AaaARrrrGGgghhHH! You hit your second pirate ship, better luck next time!" << endl;    

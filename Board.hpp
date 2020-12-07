@@ -15,11 +15,15 @@ class Board {
         int YCoor;
         void populate();
 	Difficulty* diffy;
-   protected:
-        std::vector < std::vector<char> > set;
-        std::vector < std::vector<char> > displaySet;
+  public:
+	int x,y;
+ //  protected:
+       // std::vector<std::vector<char>> set;
+       // std::vector<std::vector<char>> displaySet;
         int Pcount;
    public:
+	std::vector<std::vector<char>> set;
+        std::vector<std::vector<char>> displaySet;
 	void setDiffy(Difficulty*);
         void display();
         Board();
@@ -30,7 +34,7 @@ class Board {
 	int convert();
 	bool getMark();
 	int getCount();
-	void updateBoard();
+	void updateBoard(Difficulty* );
 	bool check();
         friend class Difficulty;
 };

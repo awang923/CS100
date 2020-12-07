@@ -7,11 +7,11 @@
 #include <vector>
 using namespace std;
 class Board;
-class Easy:public Difficulty{
+class Easy: public Difficulty{
 	private:
 	int count = 0;
 	public:
 		Easy(Board* b);
-		virtual bool difficulty();
+		virtual bool difficulty(int, int);
 };
 #endif //EASY_HPP

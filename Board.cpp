@@ -117,8 +117,9 @@ int Board::convert(){
 	return 9;
    }   
 }
-void Board::updateBoard(){
-   while (this->check()){
+void Board::updateBoard(Difficulty* diff){
+   setDiffy(diff);
+   while (this->check()){  
       this->display();
     //  this->check();
    }
@@ -145,8 +146,8 @@ bool Board::check(){
    int YCoor;
    this->getXCoor(XCoor);
    this->getYCoor(YCoor);
-   int x = convert();
-   int y = this->YCoor - 1;
+   x = convert();
+   y = this->YCoor - 1;
 if(!getMark()){
    if (set[y][x] == '*'){
      cout << endl << "AaaARrrrGGgghhHH! You hit the pirate ship, better luck next time!" << endl;
@@ -174,16 +175,17 @@ cout << "T R E A S U R E  H U N T" << endl;
 cout << "Choose your diffy: Hard(1), Easy(2)" << endl;
 char a;
 cin >> a;
+Difficulty* i;
 if(a == '1'){
-	Difficulty* i = new Hard(this);
-setDiffy(i);
+	i = new Hard(this);
+//setDiffy(i);
 }
 else{
- Difficulty* i = new Easy(this);
-setDiffy(i);
+ i = new Easy(this);
+//setDiffy(i);
 } 
 this->display();
-this->updateBoard();
+this->updateBoard(i);
 }
 
 void Board::populate(){

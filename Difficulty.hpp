@@ -9,7 +9,7 @@ class Difficulty{
 
         public:
         Difficulty(Board *b):gameBoard(b){}
-       	virtual bool difficulty() =0;
+       	virtual bool difficulty(int, int) =0;
 
 };
 
