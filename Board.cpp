@@ -5,7 +5,7 @@ using namespace std;
 
 Board::Board(){
 vector <char> seaColumn;
-
+Pcount = 10;
 
 for(int i = 0; i < 10; i++){
 	seaColumn.push_back('~');
@@ -21,6 +21,7 @@ populate();
 
 void Board::display(){
 Iterator* it = new Iterator();
+cout << endl<< "Pirate Ships Left: " << this->getCount() << endl<< endl;
 cout << "   A B C D E F G H I J " << endl;
 for (int i = 0; i < 9; i++){
   cout << i+1 << " |";
@@ -64,15 +65,23 @@ void Board::getXCoor(char XCoor){
    this->XCoor = XCoor;
 }
 
-void Board::getYCoor(char YCoor) {
+void Board::getYCoor(int YCoor) {
    cout << "Please enter the Y coordinate." << endl;
    cin >> YCoor;
-   while (!(YCoor <= '9' && YCoor >= '1')){
+   bool checkAns;
+   while (!(YCoor <= 10 && YCoor >= 1)|| !(cin >> YCoor)){
         cout << "Invalid input. Please enter a number between 1 and 9." << endl;
-  	cin >> YCoor;
+  	cin.clear();
+	cin.ignore(10000,'\n');
+	cin >> YCoor;
+	break;
    }
    cout << "Valid input" << endl;
    this->YCoor = YCoor;
+}
+
+int Board::getCount(){
+   return Pcount;
 }
 
 int Board::convert(){
@@ -114,13 +123,30 @@ void Board::updateBoard(){
    }
 }
 
+bool Board::getMark(){
+   string ans;
+   cout << "Do you think there's a pirate ship there?(y/n)" << endl;
+   cin >> ans;
+   while (!(ans == "y"|| ans == "Y" || ans == "yes" || ans == "Yes" || ans == "n" || ans == "N" || ans == "no" || ans == "No")){
+      cout << "Invalid input. Please enter y or n" << endl;
+      cin >> ans;
+   }
+   if (ans == "y"|| ans == "Y" || ans == "yes" || ans == "Yes"){
+      return true;
+   }
+   else{
+      return false;
+   }
+}
+
 bool Board::check(){
-   char XCoor,YCoor;
+   char XCoor;
+   int YCoor;
    this->getXCoor(XCoor);
    this->getYCoor(YCoor);
    int x = convert();
-   int y = this->YCoor - 49;
-
+   int y = this->YCoor - 1;
+if(!getMark()){
    if (set[y][x] == '*'){
      cout << endl << "AaaARrrrGGgghhHH! You hit the pirate ship, better luck next time!" << endl;
      this->displayPirate();
@@ -130,7 +156,11 @@ bool Board::check(){
 	displaySet[y][x] = set[y][x];
 	return true;
    }
-
+}
+else{
+   displaySet[y][x] = 'P';
+   Pcount--;  
+}
 }
 
 void Board::run_game(){
