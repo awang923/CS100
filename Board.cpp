@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Difficulty.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -163,8 +164,24 @@ else{
 }
 }
 
+
+void Board::setDiffy(Difficulty* s){
+this->diffy = s;
+}
+
 void Board::run_game(){
 cout << "T R E A S U R E  H U N T" << endl;
+cout << "Choose your diffy: Hard(1), Easy(2)" << endl;
+char a;
+cin >> a;
+if(a == '1'){
+	Difficulty* i = new Hard(this);
+setDiffy(i);
+}
+else{
+ Difficulty* i = new Easy(this);
+setDiffy(i);
+} 
 this->display();
 this->updateBoard();
 }

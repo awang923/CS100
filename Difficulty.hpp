@@ -4,11 +4,11 @@
 class Board; 
 class Difficulty{
 
-	private:
+	protected:
  	    Board* gameBoard;
 
         public:
-            Difficulty(Board *b):gameBoard(b){};
+        Difficulty(Board *b):gameBoard(b){}
        	virtual bool difficulty() =0;
 
 };
