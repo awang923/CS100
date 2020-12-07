@@ -8,6 +8,7 @@ class Difficulty{
  	    Board* gameBoard;
 
         public:
+	Difficulty(){};
         Difficulty(Board *b):gameBoard(b){}
        	virtual bool difficulty(int, int) =0;
 

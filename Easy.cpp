@@ -6,7 +6,7 @@ this->gameBoard = b;
 }
 bool Easy::difficulty(int xc, int yc){
 		xc = gameBoard->x;
-		yc = gameBaord->y;
+		yc = gameBoard->y;
                 if (gameBoard->set[0][1] == '*'){
                         if (count = 1){
                                 cout << endl << "AaaARrrrGGgghhHH! You hit your second pirate ship, better luck next time!" << endl;    
@@ -21,7 +21,7 @@ bool Easy::difficulty(int xc, int yc){
                          return false;
                 }
                 else{
-                       gameBoard->displaySet[y][x] = gameBoard->set[y][x];
+                       gameBoard->displaySet[yc][xc] = gameBoard->set[yc][xc];
                         return true;
                 }
         }

@@ -9,7 +9,7 @@ using namespace std;
 class Board;
 class Hard: public Difficulty{
         public:
-		Hard(Board* b);
+		Hard(Board*);
 		virtual bool difficulty(int, int);
 };
 #endif //HARD_CPP

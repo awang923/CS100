@@ -1,6 +1,6 @@
 #include "Hard.hpp"
 #include <iostream>
-  
+
 Hard::Hard(Board* b){
 this->gameBoard = b;
 }
