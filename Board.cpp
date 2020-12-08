@@ -121,7 +121,6 @@ void Board::updateBoard(Difficulty* diff){
    setDiffy(diff);
    while (this->check()){  
       this->display();
-    //  this->check();
    }
 }
 
@@ -149,19 +148,7 @@ bool Board::check(){
    x = convert();
    y = this->YCoor - 1;
 if(!getMark()){
-   if (set[y][x] == '*'){
-     cout << endl << "AaaARrrrGGgghhHH! You hit the pirate ship, better luck next time!" << endl;
-     this->displayPirate();
-     return false;
-   }
-   else{
-	displaySet[y][x] = set[y][x];
-	return true;
-   }
-}
-else{
-   displaySet[y][x] = 'P';
-   Pcount--;  
+   return diffy->difficulty(XCoor,YCoor);
 }
 }
 
