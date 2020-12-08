@@ -5,5 +5,7 @@ SET(CMAKE_CXX_STANDARD 11)
 ADD_EXECUTABLE(game
         Board.cpp
         main.cpp
+	Hard.cpp
+	Easy.cpp
 )
 

@@ -1,6 +1,8 @@
 #include "Board.hpp"
+#include "Difficulty.hpp"
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 Board::Board(){
@@ -67,14 +69,19 @@ void Board::getXCoor(char XCoor){
 
 void Board::getYCoor(int YCoor) {
    cout << "Please enter the Y coordinate." << endl;
-   cin >> YCoor;
-   bool checkAns;
-   while (!(YCoor <= 10 && YCoor >= 1)|| !(cin >> YCoor)){
+  if (!(cin >> YCoor)){
+  cout << "Invalid input. Please enter a number between 1 and 9." << endl;
+        cin.clear();
+        cin.ignore(10000,'\n');
+        cin >> YCoor;
+
+}
+   while (!(YCoor <= 10 && YCoor >= 1)){
         cout << "Invalid input. Please enter a number between 1 and 9." << endl;
-  	cin.clear();
-	cin.ignore(10000,'\n');
-	cin >> YCoor;
-	break;
+        cin.clear();
+        cin.ignore(10000,'\n');
+        cin >> YCoor;
+        break;
    }
    cout << "Valid input" << endl;
    this->YCoor = YCoor;
@@ -116,10 +123,15 @@ int Board::convert(){
 	return 9;
    }   
 }
-void Board::updateBoard(){
-   while (this->check()){
+void Board::updateBoard(Difficulty* diff){
+   setDiffy(diff);
+   while (this->check() && !isWon()){  
       this->display();
-    //  this->check();
+      this->displayPirate();
+   }
+   if (isWon()){
+   	cout << "Yayyy! You won!" << endl;
+	displayPirate();
    }
 }
 
@@ -132,6 +144,7 @@ bool Board::getMark(){
       cin >> ans;
    }
    if (ans == "y"|| ans == "Y" || ans == "yes" || ans == "Yes"){
+      Pcount--;
       return true;
    }
    else{
@@ -144,29 +157,43 @@ bool Board::check(){
    int YCoor;
    this->getXCoor(XCoor);
    this->getYCoor(YCoor);
-   int x = convert();
-   int y = this->YCoor - 1;
-if(!getMark()){
-   if (set[y][x] == '*'){
-     cout << endl << "AaaARrrrGGgghhHH! You hit the pirate ship, better luck next time!" << endl;
-     this->displayPirate();
-     return false;
+   x = convert();
+   y = this->YCoor - 1;
+   if(getMark()){
+   	displaySet[y][x] = 'P';
+	if(Pcount == 0){
+	return false;
+	} 
    }
    else{
-	displaySet[y][x] = set[y][x];
-	return true;
-   }
+	if(set[y][x] == '0'){
+	clearZero(y,x);
+	}
+	return   diffy->difficulty(XCoor,YCoor);
+	}
 }
-else{
-   displaySet[y][x] = 'P';
-   Pcount--;  
-}
+
+
+void Board::setDiffy(Difficulty* s){
+this->diffy = s;
 }
 
 void Board::run_game(){
 cout << "T R E A S U R E  H U N T" << endl;
+cout << "Choose your diffy: Hard(1), Easy(2)" << endl;
+char a;
+cin >> a;
+Difficulty* i;
+if(a == '1'){
+	i = new Hard(this);
+//setDiffy(i);
+}
+else{
+ i = new Easy(this);
+//setDiffy(i);
+} 
 this->display();
-this->updateBoard();
+this->updateBoard(i);
 }
 
 void Board::populate(){
@@ -352,4 +379,110 @@ for (auto i = 0; i < 10; i++) {
             }
         }
     }
+}
+
+void Board::clearZero(int i, int j){
+   unordered_map<int,int> mp;
+   clearZero(this->set,this->displaySet,i,j,mp);
+    return;
+}
+
+void Board::clearZero(vector<vector<char>> sz, vector<vector<char>>& ds, int i, int j, unordered_map<int, int>& s){
+ string xs = to_string(i);
+  string ys = to_string(j);
+  string keys = xs+ys;
+  int key = stoi(keys);
+  if(sz[i][j] != '0' || s.find(key) != s.end()){
+      ds[i][j] = sz[i][j];
+    return;
+  }
+    
+  else if(i == 0 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j+1,s);
+    
+  }
+  
+  else if(i == 9 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(i == 0 && j == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j-1,s);
+  }
+  
+  else if(i == 9 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+     clearZero(sz,ds,i-1,j,s);
+        clearZero(sz,ds,i,j-1,s);
+  }
+  
+  else if(i == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j-1,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if( i == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+        clearZero(sz,ds,i,j-1,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i+1,j,s);
+        clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(j == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i+1,j,s);
+      clearZero(sz,ds,i,j-1,s);
+  }
+  
+
+    
+  else{
+  ds[i][j] = sz[i][j];
+ s.insert(pair<int,int>(key,0));
+  clearZero(sz,ds,i-1,j,s);
+  clearZero(sz,ds,i+1,j,s);
+  clearZero(sz,ds,i,j-1,s);
+  clearZero(sz,ds,i,j+1,s);
+  }
+}
+
+bool Board::isWon(){
+for(int i = 0; i < 10 ;i++){
+	for(int j = 0; j < 10; j++){
+		if(set[i][j] == '*'){
+			if(displaySet[i][j] == 'P'){
+				continue;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+				
+}
+return true;
 }
