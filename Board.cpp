@@ -125,11 +125,13 @@ int Board::convert(){
 }
 void Board::updateBoard(Difficulty* diff){
    setDiffy(diff);
-   while (this->check()){  
+   while (this->check() && !isWon()){  
       this->display();
+      this->displayPirate();
    }
-   if (Pcount == 0){
+   if (isWon()){
    	cout << "Yayyy! You won!" << endl;
+	displayPirate();
    }
 }
 
@@ -466,4 +468,21 @@ void Board::clearZero(vector<vector<char>> sz, vector<vector<char>>& ds, int i, 
   clearZero(sz,ds,i,j-1,s);
   clearZero(sz,ds,i,j+1,s);
   }
+}
+
+bool Board::isWon(){
+for(int i = 0; i < 10 ;i++){
+	for(int j = 0; j < 10; j++){
+		if(set[i][j] == '*'){
+			if(displaySet[i][j] == 'P'){
+				continue;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+				
+}
+return true;
 }

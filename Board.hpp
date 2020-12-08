@@ -15,6 +15,7 @@ class Board {
         char XCoor;
         int YCoor;
         void populate();
+	bool isWon();
 	Difficulty* diffy;
   public:
 	int x,y;
