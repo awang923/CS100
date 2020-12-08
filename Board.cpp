@@ -127,6 +127,9 @@ void Board::updateBoard(Difficulty* diff){
    while (this->check()){  
       this->display();
    }
+   if (Pcount == 0){
+   	cout << "Yayyy! You won!" << endl;
+   }
 }
 
 bool Board::getMark(){
@@ -138,6 +141,7 @@ bool Board::getMark(){
       cin >> ans;
    }
    if (ans == "y"|| ans == "Y" || ans == "yes" || ans == "Yes"){
+      Pcount--;
       return true;
    }
    else{
@@ -152,9 +156,12 @@ bool Board::check(){
    this->getYCoor(YCoor);
    x = convert();
    y = this->YCoor - 1;
-if(!getMark()){
-   return diffy->difficulty(XCoor,YCoor);
-}
+   if(getMark()){
+   	displaySet[y][x] = 'P'; 
+   }
+   else{
+	return   diffy->difficulty(XCoor,YCoor);
+	}
 }
 
 
