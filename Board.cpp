@@ -2,6 +2,7 @@
 #include "Difficulty.hpp"
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 Board::Board(){
@@ -157,9 +158,15 @@ bool Board::check(){
    x = convert();
    y = this->YCoor - 1;
    if(getMark()){
-   	displaySet[y][x] = 'P'; 
+   	displaySet[y][x] = 'P';
+	if(Pcount == 0){
+	return false;
+	} 
    }
    else{
+	if(set[y][x] == '0'){
+	clearZero(y,x);
+	}
 	return   diffy->difficulty(XCoor,YCoor);
 	}
 }
@@ -370,4 +377,93 @@ for (auto i = 0; i < 10; i++) {
             }
         }
     }
+}
+
+void Board::clearZero(int i, int j){
+   unordered_map<int,int> mp;
+   clearZero(this->set,this->displaySet,i,j,mp);
+    return;
+}
+
+void Board::clearZero(vector<vector<char>> sz, vector<vector<char>>& ds, int i, int j, unordered_map<int, int>& s){
+ string xs = to_string(i);
+  string ys = to_string(j);
+  string keys = xs+ys;
+  int key = stoi(keys);
+  if(sz[i][j] != '0' || s.find(key) != s.end()){
+      ds[i][j] = sz[i][j];
+    return;
+  }
+    
+  else if(i == 0 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j+1,s);
+    
+  }
+  
+  else if(i == 9 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(i == 0 && j == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j-1,s);
+  }
+  
+  else if(i == 9 && j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+     clearZero(sz,ds,i-1,j,s);
+        clearZero(sz,ds,i,j-1,s);
+  }
+  
+  else if(i == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i+1,j,s);
+    clearZero(sz,ds,i,j-1,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if( i == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+        clearZero(sz,ds,i,j-1,s);
+      clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(j == 0){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i+1,j,s);
+        clearZero(sz,ds,i,j+1,s);
+  }
+  
+  else if(j == 9){
+      ds[i][j] = sz[i][j];
+    s.insert(pair<int,int>(key,0));
+    clearZero(sz,ds,i-1,j,s);
+      clearZero(sz,ds,i+1,j,s);
+      clearZero(sz,ds,i,j-1,s);
+  }
+  
+
+    
+  else{
+  ds[i][j] = sz[i][j];
+ s.insert(pair<int,int>(key,0));
+  clearZero(sz,ds,i-1,j,s);
+  clearZero(sz,ds,i+1,j,s);
+  clearZero(sz,ds,i,j-1,s);
+  clearZero(sz,ds,i,j+1,s);
+  }
 }

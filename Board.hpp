@@ -8,6 +8,7 @@
 #include <time.h>
 #include <iostream>
 #include "iterator.hpp"
+#include <unordered_map>
 class Difficulty;
 class Board {
    private:
@@ -24,6 +25,8 @@ class Board {
    public:
 	//std::vector<std::vector<char>> set;
        // std::vector<std::vector<char>> displaySet;
+       void clearZero(int i, int j);
+    	void clearZero(vector<vector<char>> sz, vector<vector<char>>& ds, int i, int j, unordered_map<int, int>& s);
 	void setDiffy(Difficulty*);
         void display();
         Board();
