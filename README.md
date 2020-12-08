@@ -74,6 +74,9 @@
  > Screenshots of the input/output after running your application
  ## Installation/Usage
  > Instructions on installing and running your application
+  > * This game runs on your computer terminal. To install, you will clone our git repository into your terminal. To compile we use the cmake3 . command, then make. Finally ./game is the excutible to run the game. 
+   > * To play, the user will first be prompted to choose a difficulty level. Easy (2) will allow the user to hit one pirate ship but still continue the fame. Hard (1), ends the game as soon as a user hits a pirate ship. 
+   > * 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
