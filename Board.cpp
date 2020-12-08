@@ -127,7 +127,6 @@ void Board::updateBoard(Difficulty* diff){
    setDiffy(diff);
    while (this->check() && !isWon()){  
       this->display();
-      this->displayPirate();
    }
    if (isWon()){
    	cout << "Yayyy! You won!" << endl;
