@@ -72,11 +72,15 @@
  > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  ## Screenshots
  > Screenshots of the input/output after running your application
+ 
  ## Installation/Usage
  > Instructions on installing and running your application
   > * This game runs on your computer terminal. To install, you will clone our git repository into your terminal. To compile we use the cmake3 . command, then make. Finally ./game is the excutible to run the game. 
-   > * To play, the user will first be prompted to choose a difficulty level. Easy (2) will allow the user to hit one pirate ship but still continue the fame. Hard (1), ends the game as soon as a user hits a pirate ship. 
-   > * 
+   > * To play, the user will first be prompted to choose a difficulty level. Easy (2) will allow the user to hit one pirate ship but still continue the game. Hard (1), ends the game as soon as a user hits a pirate ship. 
+   > * The user will enter the x and y coordinates where they either wish to uncover or mark as a pirate ship. 
+   > * If the user chooses to mark it as a pirate ship, the board will update with a ‘P’ at that point. If they did not, the board will update with a number between 0 and 8 indicating how many pirate ships are around that point.
+   > * If the user hits a pirate ship on easy mode, they will be prompted with a message saying they can try again. If the user is on hard mode, the game will end.
+   > * The user will win the game once they uncover all the pirate ships on the board. 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
