@@ -181,7 +181,6 @@ void Board::run_game(){
 cout << "T R E A S U R E  H U N T" << endl;
 cout << "Choose your diffy: Hard(1), Easy(2)" << endl;
 int a;
-cin >> a;
 Difficulty* i;
 if (!(cin >> a)){
   cout << "Invalid input. Please enter 1 or 2" << endl;
