@@ -73,12 +73,19 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ><img src="Images/Start.png">
+ > The start of the game and asked for game difficulty
  ><img src="Images/First display.png">
+ > Display of the game board with the pirate counter 
    ><img src="Images/Ask for Input.png">
+ > User inputs the coordinates
    ><img src="Images/Safe Display.png">
+  >  Board updates after user inputs 
    ><img src="Images/One bomb.png">
-   ><img src="Images/Lose Easy.png">
-   ><img src="Images/Won Game.png">
+   > User hits their first pirate ship but can still continue.
+   ><img src="Images/Lose Easy.png">\
+   > User looses game\
+   ><img src="Images/Won Game.png">\
+   > User wins game
  
  ## Installation/Usage
  > Instructions on installing and running your application
