@@ -5,20 +5,26 @@ Easy::Easy(Board* b){
 this->gameBoard = b;
 }
 bool Easy::difficulty(int xc, int yc){
+		int s = this->count;
 		xc = gameBoard->x;
 		yc = gameBoard->y;
-                if (gameBoard->set[0][1] == '*'){
-                        if (count = 1){
+		cout << this->count << endl;
+                if (gameBoard->set[yc][xc] == '*'){
+                        if (this->count == 1){
                                 cout << endl << "AaaARrrrGGgghhHH! You hit your second pirate ship, better luck next time!" << endl;    
                                  gameBoard->displayPirate();
+				 return false;
                         }
-                        else if (count = 0 ){
+                        else if (this->count == 0 ){
                                 cout << endl << "AaaARrrrGGgghhHH! You hit a pirate ship. Luckily you get one more try!" << endl;
-                                count ++;
-                                gameBoard->displayPirate();
+                                this->count++;
+				gameBoard->displaySet[yc][xc] = gameBoard->set[yc][xc];
+                               // gameBoard->display();
+				return true;
 
                         }
-                         return false;
+		  	return true;
+
                 }
                 else{
                        gameBoard->displaySet[yc][xc] = gameBoard->set[yc][xc];

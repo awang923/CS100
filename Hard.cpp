@@ -6,9 +6,7 @@ this->gameBoard = b;
 }
 
 bool Hard::difficulty(int xc, int yc){
-		xc = gameBoard->x;
-		yc = gameBoard->y;
-                if (gameBoard->set[0][1] == '*'){
+                if (gameBoard->set[yc][xc] == '*'){
                         cout << endl << "AaaARrrrGGgghhHH! You hit the pirate ship, better luck next time!" << endl;
                         gameBoard->displayPirate();
                         return false;

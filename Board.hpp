@@ -17,13 +17,13 @@ class Board {
 	Difficulty* diffy;
   public:
 	int x,y;
- //  protected:
-       // std::vector<std::vector<char>> set;
-       // std::vector<std::vector<char>> displaySet;
+   protected:
+        std::vector<std::vector<char>> set;
+       std::vector<std::vector<char>> displaySet;
         int Pcount;
    public:
-	std::vector<std::vector<char>> set;
-        std::vector<std::vector<char>> displaySet;
+	//std::vector<std::vector<char>> set;
+       // std::vector<std::vector<char>> displaySet;
 	void setDiffy(Difficulty*);
         void display();
         Board();
@@ -37,6 +37,8 @@ class Board {
 	void updateBoard(Difficulty* );
 	bool check();
         friend class Difficulty;
+	friend class Hard;
+	friend class Easy;
 };
 #endif //BOARD_H
 
