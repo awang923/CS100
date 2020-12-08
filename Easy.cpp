@@ -8,7 +8,6 @@ bool Easy::difficulty(int xc, int yc){
 		int s = this->count;
 		xc = gameBoard->x;
 		yc = gameBoard->y;
-		cout << this->count << endl;
                 if (gameBoard->set[yc][xc] == '*'){
                         if (this->count == 1){
                                 cout << endl << "AaaARrrrGGgghhHH! You hit your second pirate ship, better luck next time!" << endl;    

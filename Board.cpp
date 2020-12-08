@@ -180,10 +180,23 @@ this->diffy = s;
 void Board::run_game(){
 cout << "T R E A S U R E  H U N T" << endl;
 cout << "Choose your diffy: Hard(1), Easy(2)" << endl;
-char a;
+int a;
 cin >> a;
 Difficulty* i;
-if(a == '1'){
+if (!(cin >> a)){
+  cout << "Invalid input. Please enter 1 or 2" << endl;
+  cin.clear();
+  cin.ignore(10000,'\n');
+  cin >> a;
+
+}
+while (!(a == 1 || a == 2 )){
+ cout << "Invalid input. Please enter 1 or 2" << endl;
+ cin.clear();
+ cin.ignore(10000,'\n');
+ cin >> a;
+}
+if(a == 1){
 	i = new Hard(this);
 //setDiffy(i);
 }

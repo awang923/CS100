@@ -9,3 +9,9 @@ ADD_EXECUTABLE(game
 	Easy.cpp
 )
 
+ADD_EXECUTABLE(testB
+	Board.cpp
+	testMain.cpp
+	Hard.cpp
+	Easy.cpp
+)
